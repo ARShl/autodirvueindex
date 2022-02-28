@@ -1,25 +1,71 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as path from 'path';
+import * as fs from 'fs';
+
+import { commands, window } from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "autodirvueindex" is now active!');
+  // 创建component或page页面
+  const createCRP: any = commands.registerCommand(
+    'autodirvueindex.cvcop',
+    async (fileUri) => {
+      if (!fileUri) {
+        return;
+      }
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('autodirvueindex.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from autoDirVueIndex!');
-	});
+      const createDir = path.resolve(fileUri.fsPath);
+      if (!createDir) {
+        return;
+      }
+      const cRPName: any = await window.showInputBox({
+        placeHolder: '页面名称'
+      });
 
-	context.subscriptions.push(disposable);
+      const namespace = cRPName[0].toUpperCase() + cRPName?.substring(1);
+      const d = path.join(createDir, cRPName);
+      const f = path.join(d, 'index.vue');
+      if (fs.existsSync(f)) {
+        window.showErrorMessage('文件已存在！');
+        return;
+      }
+      const s = path.join(d, 'index.stylus');
+      if (fs.existsSync(s)) {
+        window.showErrorMessage('stylus文件已存在!');
+        return;
+      }
+
+      fs.mkdirSync(d);
+      fs.writeFileSync(
+        f,
+        `
+<template>
+  <div>
+    
+  </div>
+</template>
+<script>
+
+
+export default {
+  name:'${namespace}'
+}
+</script>
+
+<style lang="stylus" scoped>
+  @import './index.stylus'
+</style>
+			`
+      );
+
+      fs.writeFileSync(s, `// use stylus css standard`);
+    }
+  );
+
+  context.subscriptions.push(createCRP);
 }
 
 // this method is called when your extension is deactivated
