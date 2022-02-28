@@ -47,16 +47,26 @@ export function activate(context: vscode.ExtensionContext) {
     
   </div>
 </template>
+
 <script>
-
-
 export default {
-  name:'${namespace}'
+  name: 'Newnew',
+  components: {
+
+  },
+  data() {
+    return {
+
+    }
+  },
+  methods: {
+
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
-  @import './index.stylus'
+@import './index.stylus'
 </style>
 			`
       );
