@@ -2,6 +2,7 @@
 	"name": "autodirvueindex",
 	"displayName": "autoDirVueIndex",
 	"description": "自动添加组件",
+	"icon": "https://github.com/ARShl/autodirvueindex/blob/main/resources/images/icon.png?raw=true",
 	"version": "0.1.0",
 	"engines": {
 		"vscode": "^1.64.0"
