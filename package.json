@@ -3,7 +3,7 @@
 	"displayName": "autoDirVueIndex",
 	"description": "自动添加组件",
 	"icon": "resources/images/icon.png",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"engines": {
 		"vscode": "^1.64.0"
 	},
