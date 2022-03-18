@@ -50,7 +50,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 <script>
 export default {
-  name: 'Newnew',
+  name: '${namespace}',
   components: {
 
   },

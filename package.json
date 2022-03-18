@@ -12,24 +12,24 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:autodirvueindex.cvcop" 
+		"onCommand:autodirvueindex.cvcop"
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
-    "commands": [
-      {
-        "command": "autodirvueindex.cvcop",
-        "title": "create-vue-component-or-page"
-      }
-    ],
-    "menus": {
-      "explorer/context": [
-        {
-          "when": "explorerResourceIsFolder",
-          "command": "autodirvueindex.cvcop"
-        }
-      ]
-    }
+		"commands": [
+			{
+				"command": "autodirvueindex.cvcop",
+				"title": "AAcreate-vue-component-or-page"
+			}
+		],
+		"menus": {
+			"explorer/context": [
+				{
+					"when": "explorerResourceIsFolder",
+					"command": "autodirvueindex.cvcop"
+				}
+			]
+		}
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run package",
